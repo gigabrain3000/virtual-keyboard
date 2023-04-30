@@ -1,8 +1,15 @@
+.h1 {
+  font: 50px/60px "Arial", sans-serif;
+  color: #888888;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
 .textarea {
   display: block;
   height: 30vh;
   width: 850px;
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
 }
 
 .keyboard {
@@ -12,6 +19,7 @@
   border: 1px #eeeeee solid;
   background-color: #bbbbbb;
   border-radius: 10px;
+  user-select: none;
 }
 .keyboard .keyboard-row {
   display: flex;
