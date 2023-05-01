@@ -10,6 +10,7 @@
   height: 30vh;
   width: 850px;
   margin: 0 auto 50px auto;
+  border: 2px #000000 solid;
 }
 
 .keyboard {
@@ -42,6 +43,10 @@
 }
 .keyboard .keyboard-row .keyboard-row__key:hover {
   background-color: #dddddd;
+}
+.keyboard .keyboard-row .keyboard-row__key.keyboard-row__key_active {
+  background-color: #cccccc;
+  border-color: #d3d3d3;
 }
 .keyboard .keyboard-row .keyboard-row__key.keyboard-row__key_special {
   min-width: 108px;
