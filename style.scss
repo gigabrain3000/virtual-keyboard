@@ -11,6 +11,7 @@
   width: 850px;
   margin: 0 auto 50px auto;
   border: 2px #000000 solid;
+  font: 400 16px/20px "Arial", sans-serif;
 }
 
 .keyboard {
@@ -43,6 +44,10 @@
 
       &:hover {
         background-color: #dddddd;
+      }
+      &:active {
+        background-color: #cccccc;
+        border-color: #d3d3d3;
       }
 
       &.keyboard-row__key_active {

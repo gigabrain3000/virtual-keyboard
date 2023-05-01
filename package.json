@@ -1,0 +1,23 @@
+{
+  "name": "virtual-keyboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gigabrain3000/virtual-keyboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gigabrain3000/virtual-keyboard/issues"
+  },
+  "homepage": "https://github.com/gigabrain3000/virtual-keyboard#readme",
+  "devDependencies": {
+    "eslint": "^8.39.0"
+  }
+}
