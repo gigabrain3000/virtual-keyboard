@@ -41,6 +41,7 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0 2px #999999;
+  transition: 0.2s;
 }
 .keyboard .keyboard-row .keyboard-row__key:hover {
   background-color: #dddddd;
@@ -48,10 +49,14 @@
 .keyboard .keyboard-row .keyboard-row__key:active {
   background-color: #cccccc;
   border-color: #d3d3d3;
+  border-radius: 30px;
+  transition: 0.2s;
 }
 .keyboard .keyboard-row .keyboard-row__key.keyboard-row__key_active {
   background-color: #cccccc;
   border-color: #d3d3d3;
+  border-radius: 30px;
+  transition: 0.2s;
 }
 .keyboard .keyboard-row .keyboard-row__key.keyboard-row__key_special {
   min-width: 108px;

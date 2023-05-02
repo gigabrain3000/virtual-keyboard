@@ -1,7 +1,6 @@
 const KEYBOARD_KEYS = [["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", 'Backspace'], ["Tab", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\", "Del"], ["Caps Lock", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "Enter"], ["Shift", "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", "▲","Shift"], ["Ctrl", "Alt", "Space", "Alt", "◄", "▼", "►", "Ctrl"]];
 const LETTERS = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"];
 const KEYS_SPECIAL = ["Backspace", "Caps Lock", "Enter", "Shift"];
-const KEYS_SPECIAL_SHORT = ["Tab", "Ctrl", "Alt", "Del"];
 const KEYS_SYMBOLS = ["`", "-", "=", "[", "]", "\\", ";", "'", ",", ".", "/"];
 const KEYS_ARROWS = ["▲", "◄", "▼", "►"];
 const KEYS_NUMBERS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
@@ -75,7 +74,8 @@ function interactVirtualKeyboard (e) {
       simulateDel ();
     }
     else if (keyboardKey.innerText === "Enter") {
-      console.log(3);
+      textarea.value = textarea.value.substring(0, startPos) + "\n" + textarea.value.substring(endPos);
+      textarea.setSelectionRange(startPos + 1, startPos + 1);
     }
     else if (keyboardKey.innerText === "Tab") {
       textarea.value = textarea.value.substring(0, startPos) + "\t" + textarea.value.substring(endPos);
@@ -92,6 +92,30 @@ function interactVirtualKeyboard (e) {
   else {
     textarea.value = textarea.value.substring(0, startPos) + keyboardKey.innerText + textarea.value.substring(endPos);
     textarea.setSelectionRange(startPos + 1, startPos + 1);
+  }
+}
+
+function keyDown (e) {
+  let startPos = textarea.selectionStart;
+  let keyboardKey = document.querySelectorAll(".keyboard-row__key");
+  textarea.focus();
+  for (let i = 0; i <= keyboardKey.length - 1; i++) {
+    if (keyboardKey[i].innerText == e.key || e.key == "Control" && keyboardKey[i].innerText == "Ctrl" || e.key == " " && keyboardKey[i].innerText == "Space") {
+      keyboardKey[i].classList.add("keyboard-row__key_active");
+      textarea.setSelectionRange(startPos + 1, startPos + 1);
+    }
+    else if (e.key == "CapsLock" && keyboardKey[i].innerText == "Caps Lock") {
+      keyboardKey[i].click();
+    }
+  }
+}
+
+function keyUp (e) {
+  let keyboardKey = document.querySelectorAll(".keyboard-row__key");
+  for (let i = 0; i <= keyboardKey.length - 1; i++) {
+    if (keyboardKey[i].innerText == e.key || e.key == "Control" && keyboardKey[i].innerText == "Ctrl" || e.key == " " && keyboardKey[i].innerText == "Space") {
+      keyboardKey[i].classList.remove("keyboard-row__key_active");
+    }
   }
 }
 
@@ -137,5 +161,7 @@ function simulateCapsLock (e) {
 }
 
 keyboard.addEventListener("click", interactVirtualKeyboard);
+document.addEventListener("keydown", keyDown);
+document.addEventListener("keyup", keyUp);
 
 createKeyboard ();
